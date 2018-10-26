@@ -14,7 +14,7 @@ body{
 	padding-top: 50px;
 
 }
-#main-block{
+#main-block-auth{
 
 	margin: 0 auto;
 	display: flex;
@@ -24,6 +24,18 @@ body{
 	border-radius: 10px;
 	width: 350px;
 	height: 250px;
+	background-color: rgba(255,255,255,0.5);
+}
+#main-block-game{
+	position:relative;
+	margin: 0 auto;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	border-radius: 10px;
+	width: 750px;
+	height: 500px;
 	background-color: rgba(255,255,255,0.5);
 }
 #auth-block{
@@ -61,4 +73,30 @@ body{
 	text-decoration: none;
 	color: black;
 	margin-top: 0px;
+}
+
+#main-block-game-window-object{
+	width: 200px;
+	height: 200px;
+}
+
+#main-block-game-playbtn{
+	text-align: center;
+	border-style: solid;
+	border-radius: 5px;
+	cursor: pointer;
+}
+
+#main-block-game-window-scoreblock{
+	left: 0px;
+	top:0px;
+	position: absolute;
+}
+
+#main-block-game-window-scoreblock-score{
+	
+}
+
+#main-block-game-window-scoreblock-cf{
+	
 }

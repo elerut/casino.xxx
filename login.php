@@ -3,7 +3,7 @@
 	if($_POST['submit'])
 	{
 
-
+		session_unset();
 		$login = $_POST['login']; 
 		// echo print_r($_POST, true);
 		$user = R::findone('users', 'login = ?', [$login] );
@@ -17,7 +17,7 @@
 				$user->session = $token;
 				$_SESSION['token'] = $token;
 				R::store($user);
-				header('Location: http://casino.xxx/registration.php');
+				header('Location: http://casino.xxx/play.php');
 			}
 			else
 			{
@@ -42,7 +42,7 @@
 	<div id="title">
 		casino.xxx
 	</div>
-	<article id="main-block" action="/login.php">
+	<article id="main-block-auth" action="/login.php">
 		<form method="POST" id="auth-block">
 			Логин:
 			<br>

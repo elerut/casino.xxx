@@ -16,8 +16,6 @@
 			R::store($user);
 		}
 	}
-	echo $_SESSION['login'];
-	echo $_SESSION['token'];
  ?>
 <!DOCTYPE html>
 <html>
@@ -31,7 +29,7 @@
 	<div id="title">
 		casino.xxx
 	</div>
-	<article id="main-block" action="/registration.php">
+	<article id="main-block-auth" action="/registration.php">
 		<form method="POST" id="auth-block">
 			Логин:
 			<br>
