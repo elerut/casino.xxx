@@ -46,6 +46,8 @@ else{
 	$prizes = array_values($prizes);
 	$prizeid = rndget(0,count($prizes)-1);
 	$prize = $prizes[intval($prizeid)];
+	$prize->count =$prize->count - 1;
+	R::store($prize);
 	$answer = array('about' => $prize->about, 'img' => $prize->image);
 	if ($prizeid == 0) 
 	{
