@@ -4,7 +4,7 @@
 	{
 		$login = $_POST['login']; 
 		// echo print_r($_POST, true);
-		$user = R::find('users', 'login = ?', [$login] );
+		$user = R::findone('users', 'login = ?', [$login] );
 		if($user)
 		{
 			echo'<script>alert("Пользователь с таким логином уже зарегистрирован, попробуйте указать другой логин.");</script>';
