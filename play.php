@@ -30,13 +30,16 @@
 </head>
 <body>
 	<div id="title">
-		casino.xxx
+		<a href="/">casino.xxx</a>
 	</div>
 	<article id="main-block-game" action="/login.php">
 		<div id="main-block-game-window">
 				<div id="main-block-game-window-scoreblock">
 					<div id="main-block-game-window-scoreblock-score">Баланс: <?php echo $user->cash; ?></div>
 					<a id="main-block-game-window-scoreblock-putmoneybtn" href="/payments.php">Пополнить</a>
+				</div>
+				<div id="main-block-game-window-scoreblockright">
+					<a id="main-block-game-window-scoreblock-prizespagebtn" href="/prizes.php">Просмотреть выигрыши!</a>
 				</div>
 				
 				<img id="main-block-game-window-object" src="/img/prizes/qm.png">
