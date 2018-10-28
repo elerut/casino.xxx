@@ -85,8 +85,35 @@ body{
 	border-style: solid;
 	border-radius: 5px;
 	cursor: pointer;
+	width: 200px;
+	height: 30px;
+	font-size:25px;
 }
 
+#main-block-game-refundbtn{
+	margin-top: 5px;
+	text-align: center;
+	border-style: solid;
+	border-radius: 5px;
+	cursor: pointer;
+	width: 200px;
+	height: 30px;
+	font-size:25px;
+	display: none;
+}
+
+#main-block-game-window-scoreblock-putmoneybtn{
+	text-decoration: none;
+	color: black;
+}
+#main-block-game-window-scoreblock-putmoneybtn:hover{
+	text-decoration: none;
+	color: darkred;
+}
+
+#main-block-game-winlabel{
+	width: 200px;
+}
 #main-block-game-window-scoreblock{
 	left: 0px;
 	top:0px;

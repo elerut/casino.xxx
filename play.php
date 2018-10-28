@@ -35,8 +35,8 @@
 	<article id="main-block-game" action="/login.php">
 		<div id="main-block-game-window">
 				<div id="main-block-game-window-scoreblock">
-					<div id="main-block-game-window-scoreblock-score">Баланс:<?php echo $user->cash; ?></div>
-					<div id="main-block-game-window-scoreblock-kf">Коэфициент:X<?php echo $user->koef; ?></div>
+					<div id="main-block-game-window-scoreblock-score">Баланс: <?php echo $user->cash; ?></div>
+					<a id="main-block-game-window-scoreblock-putmoneybtn" href="/payments.php">Пополнить</a>
 				</div>
 				
 				<img id="main-block-game-window-object" src="/img/prizes/qm.png">
@@ -44,6 +44,7 @@
 				<br>
 				<div id="main-block-game-playbtn" onclick="play()">Играть!</div>
 				<div id="main-block-game-winlabel" onclick=""></div>
+				<div id="main-block-game-refundbtn" onclick="to_bill()">Вернуть X<?php echo $kfloyalgame ?>!</div>
 		</div>
 	</article>
 	<script type="text/javascript">
@@ -52,6 +53,9 @@
 		<?php echo "var userlogin = '$_SESSION[login]';\nvar token = '$_SESSION[token]';\n"; ?>
 		var prizes = Array('img/prizes/real/bottle.png','img/prizes/real/bread.png','img/prizes/money.png');
 		var image =document.getElementById('main-block-game-window-object');
+		var label =document.getElementById('main-block-game-winlabel');
+		var balance = document.getElementById('main-block-game-window-scoreblock-score');
+		var refundbtn = document.getElementById('main-block-game-refundbtn');
 		function play() {
 			
 			var xhr = new XMLHttpRequest();
@@ -71,6 +75,8 @@
 			}
 			win = ans;
 			i_prize = 0;
+			label.innerHTML = '';
+			refundbtn.style.display = '';
 			game();
 		}
 		function game(){
@@ -80,29 +86,61 @@
 			{
 				//alert(selected);
 				i_prize++;
-				setTimeout("game()",300);
+				setTimeout("game()",100);
 				console.log(i_prize);
+				return;
 			}
 
 			if(i_prize < 20)
 			{
 				//alert(selected);
 				i_prize++;
-				setTimeout("game()",400);
+				setTimeout("game()",200);
 				console.log(i_prize);
+				return;
 			}
 
 			
 			
 			if(i_prize == 20){
-			i_prize = 21;
-			console.log(i_prize);
-			//alert('win');
-			alert(win);
-			image.src = win;
+				i_prize = 0;
+				console.log(i_prize);
+				//alert('win');
+				//alert(win);
+				var ans = JSON.parse(win);
+				label.innerHTML = ans['about'];
+				if(ans['img']){
+					image.src = ans['img'];
+				}
+				
+				balance.innerHTML = 'Баланс: ' + ans['balance'];
+				if(ans['label'] == 'money'){
+					refundbtn.style.display = 'block';
+				}
+
 			}
 		}
+		function to_bill(){
+			var xhr = new XMLHttpRequest();
+			xhr.open('POST', 'http://casino.xxx/random.php', false);
+			xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+			xhr.send("login="+userlogin+ "&token=" + token + "&to_bill=" + "true");
+			if (xhr.status != 200) 
+			{
+				alert( xhr.status + ': ' + xhr.statusText ); // пример вывода: 404: Not Found
+			} 
+			else 
+			{
+				var ans = xhr.responseText;
+				ans = JSON.parse(ans);
+				console.log(ans);
+				balance.innerHTML = 'Баланс: ' + ans['balance'];
+				balance.innerHTML = 'Баланс: ' + ans['balance'];
+				label.innerHTML = ans['about'];
+				refundbtn.style.display = '';
+			}
 
+		}
 		function getRandomInt(max) {
  			return Math.floor(Math.random() * Math.floor(max));
 		}

@@ -12,6 +12,7 @@
 		else{
 			$user = R::dispense('users');
 			$user->login = $login;
+			$user->cash = 0;
 			$user->password = password_hash($_POST['password'], PASSWORD_DEFAULT);
 			R::store($user);
 		}
