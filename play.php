@@ -11,12 +11,12 @@
 			}
 			else
 			{
-				header('Location: http://casino.xxx/login.php');
+				header('Location:'  . $siteurl.'/login.php');
 			}
 		}
 		else
 		{
-			header('Location: http://casino.xxx/login.php');
+			header('Location:' . $siteurl.'/login.php');
 		}
 		
 	
@@ -63,7 +63,8 @@
 		substr($jsprizes, 0, -1);
 		$jsprizes = $jsprizes  . ']' . ';';
 		echo $jsprizes;
-		echo 'var gamecost = ' . $gamecost . ';'
+		echo 'var gamecost = ' . $gamecost . ';';
+		echo 'var siteurl ="' . $siteurl . '"' . ';'; 
 		?>
 		var image =document.getElementById('main-block-game-window-object');
 		var label =document.getElementById('main-block-game-winlabel');
@@ -72,7 +73,7 @@
 		function play() {
 			
 			var xhr = new XMLHttpRequest();
-			xhr.open('POST', 'http://casino.xxx/random.php', false);
+			xhr.open('POST', siteurl + '/random.php', false);
 			xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 			xhr.send("login="+userlogin+ "&token=" + token);
 			if (xhr.status != 200) 
@@ -144,7 +145,7 @@
 		}
 		function to_bill(){
 			var xhr = new XMLHttpRequest();
-			xhr.open('POST', 'http://casino.xxx/random.php', false);
+			xhr.open('POST', siteurl + '/random.php', false);
 			xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 			xhr.send("login="+userlogin+ "&token=" + token + "&to_bill=" + "true");
 			if (xhr.status != 200) 

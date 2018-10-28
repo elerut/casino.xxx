@@ -3,6 +3,7 @@
 	$mysqlpassword = ''; //Пароль базы данных mysql
 	$mysqlbase = 'casino.xxx'; //База данных mysql
 	$mysqlhost = 'localhost'; //Адрес хостаm  mysql
+	$siteurl = 'http://casino.xxx';
 	$minmoneywin = 20; //Минимальный денежный приз
 	$maxmoneywin = 1000; //Максимальный денежный приз
 	$gamecost = 100; //Стоимость игры

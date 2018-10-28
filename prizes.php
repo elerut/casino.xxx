@@ -11,12 +11,12 @@
 			}
 			else
 			{
-				header('Location: http://casino.xxx/login.php');
+				header('Location:' . $siteurl.'/login.php');
 			}
 		}
 		else
 		{
-			header('Location: http://casino.xxx/login.php');
+			header('Location:' . $siteurl.'/login.php');
 		}
 		
 		

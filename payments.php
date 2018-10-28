@@ -11,12 +11,12 @@
 			}
 			else
 			{
-				header('Location: http://casino.xxx/login.php');
+				header('Location:' . $siteurl.'/login.php');
 			}
 		}
 		else
 		{
-			header('Location: http://casino.xxx/login.php');
+			header('Location:' . $siteurl.'/login.php');
 		}
 		if($_POST['submit'])
 		{
@@ -42,7 +42,7 @@
 </head>
 <body>
 	<div id="title">
-		casino.xxx
+		<a href="/">casino.xxx</a>
 	</div>
 	<article id="main-block-game">
 		<form method="POST" action="/payments.php" id="main-block-game-paymentwindow">

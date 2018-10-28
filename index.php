@@ -7,16 +7,16 @@
 		{
 			if($_SESSION['token'] === $user->session)
 			{
-				header('Location: http://casino.xxx/play.php');	
+				header('Location:' . $siteurl.'/play.php');	
 			}
 			else
 			{
-				header('Location: http://casino.xxx/login.php');
+				header('Location:' . $siteurl.'/login.php');
 			}
 		}
 		else
 		{
-			header('Location: http://casino.xxx/login.php');
+			header('Location:' . $siteurl.'/login.php');
 		}
 		
 	
