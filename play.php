@@ -51,7 +51,17 @@
 		var i_prize = 0;
 		var win = '';
 		<?php echo "var userlogin = '$_SESSION[login]';\nvar token = '$_SESSION[token]';\n"; ?>
-		var prizes = Array('img/prizes/real/bottle.png','img/prizes/real/bread.png','img/prizes/money.png');
+		<?php R::dispense('prizes');
+		$prizes = R::find('prizes', 'count > ?', [0]);
+		$jsprizes = 'var prizes = [';
+		foreach ($prizes as $prize) {
+			$jsprizes = $jsprizes  .'"' . $prize->image . '"' . ',';
+		}
+		substr($jsprizes, 0, -1);
+		$jsprizes = $jsprizes  . ']' . ';';
+		echo $jsprizes;
+		echo 'var gamecost = ' . $gamecost . ';'
+		?>
 		var image =document.getElementById('main-block-game-window-object');
 		var label =document.getElementById('main-block-game-winlabel');
 		var balance = document.getElementById('main-block-game-window-scoreblock-score');
@@ -77,7 +87,16 @@
 			i_prize = 0;
 			label.innerHTML = '';
 			refundbtn.style.display = '';
-			game();
+			var currentbalance = balance.innerHTML.replace('Баланс: ', "");
+			if(Number(currentbalance) - gamecost<0)
+			{
+				ans = JSON.parse(ans);
+				label.innerHTML = ans['about'];
+			}
+			else
+			{
+				game();
+			}
 		}
 		function game(){
 			var selected = prizes[getRandomInt(prizes.length)];

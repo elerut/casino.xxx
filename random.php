@@ -23,7 +23,12 @@ if($_POST['to_bill']=='true'){
 	$user->lastprize = "";
 	R::store($user);
 }
+
 else{
+	if($user->cash-$gamecost<0){
+		$answer = array('about' => "Недостатотчно средств для игры, пожалуйста, пополните счет!", 'balance' => $user->cash );
+	}
+	else{
 	$winner = R::dispense('winners');
 	if($user->lastprize != ""){ //если деньги решили не класть на игровой счет
 		$winner->prize = 'Money' .' '. $user->lastprize;
@@ -64,6 +69,7 @@ else{
 	
 	// print_r($prizeid);
 	}
+   }	
 }
 R::store($user);
 echo json_encode($answer);
