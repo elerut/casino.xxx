@@ -23,7 +23,8 @@
 			
 			if($_POST['money'])
 			{
-				$user->cash = $user->cash + intval($_POST['money']);
+				$money = intval($_POST['money']) * $kfloyal;
+				$user->cash = $user->cash + $money;
 				R::store($user);
 				header('Location: http://casino.xxx/play.php');
 			}
