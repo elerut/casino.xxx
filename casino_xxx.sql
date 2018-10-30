@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Окт 29 2018 г., 01:54
+-- Время создания: Окт 30 2018 г., 03:01
 -- Версия сервера: 5.6.38
 -- Версия PHP: 5.5.38
 
@@ -43,10 +43,9 @@ CREATE TABLE `prizes` (
 
 INSERT INTO `prizes` (`id`, `label`, `about`, `image`, `rarity`, `count`) VALUES
 (0, 'money', 'Это просто деньги, потрать их на что-нибудь хорошее', 'img/prizes/money.png', 0, 1000),
-(2, 'bread', 'Привет\r\nпривет, я хлеб, вкуснее есть меня с кетчупом и колбасой', 'img/prizes/real/bread.png', 2, 10),
-(3, 'bottle', 'Бутылка!\r\nЭто бутылка, в местах не столь отдаленных... а в прочем и не важно, отправим почтой или курьером', 'img/prizes/real/bottle.png', 100, 9),
-(5, 'Pivo', 'Держи пивавсика, удачной игры!', '/img/prizes/real/pivo.png', 0, 10000),
-(6, 'money', 'Это просто деньги, потрать их на что-нибудь хорошее', 'img/prizes/money.png', 0, 999);
+(2, 'bread', 'Привет\r\nпривет, я хлеб, вкуснее есть меня с кетчупом и колбасой', 'img/prizes/real/bread.png', 2, 0),
+(3, 'bottle', 'Бутылка!\r\nЭто бутылка, в местах не столь отдаленных... а в прочем и не важно, отправим почтой или курьером', 'img/prizes/real/bottle.png', 100, 0),
+(5, 'Pivo', 'Держи пивавсика, удачной игры!', '/img/prizes/real/pivo.png', 0, 9985);
 
 -- --------------------------------------------------------
 
@@ -69,11 +68,12 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `login`, `password`, `session`, `cash`, `koef`, `lastprize`) VALUES
-(12, 'alex', '$2y$10$e6aVNknipcNt.G9/R2KOjOzMkxSecirKGy2h1nfxU7JEMRmwx6EMC', 'e8228ff3c8fd048ef2fdafceabe01c5c', '557', '1', ''),
+(12, 'alex', '$2y$10$e6aVNknipcNt.G9/R2KOjOzMkxSecirKGy2h1nfxU7JEMRmwx6EMC', 'd3e2b569b3e748d4cfb16d2ea3323bef', '2550', '1', ''),
 (13, 'Jarik', '$2y$10$ssw5bJtLih5nPQD87mcPreIUJLynfrQSP0Es5e5uQHZlidkA/lLmi', '3b78612b9768486a58b6409eb78a112e', '', '', ''),
 (14, 'sadgirl', '$2y$10$Atph9Cxwjxvst95YFk5hCua68DaQsICRbPNlXPgXnxuVWir8HLtWe', '7239f53c98e911ef6ddd45f34e1a3148', '0', '', '688\n'),
 (15, 'John', '$2y$10$9WMllz8bSBqqCzlr5u4Zf.DtE4uH9q2k5imdbp5QQUzGn5NztmiV2', 'e6c057f30522d8a7fd207e64e8e3749c', '1400', '', ''),
-(16, '', '$2y$10$/AaBx7JP1pxd3PjB7ojuX.lNhbVE3w1GSd4jtebaUvU6ivMF/iHrq', '', '0', '', '');
+(16, '', '$2y$10$/AaBx7JP1pxd3PjB7ojuX.lNhbVE3w1GSd4jtebaUvU6ivMF/iHrq', '', '0', '', ''),
+(17, 'asd', '$2y$10$r7cbdUwphp9.UfV/UlkYxONvyNlj/X1cOXnrX5nrL/52r/pqHik8e', '', '0', '', '');
 
 -- --------------------------------------------------------
 
@@ -183,7 +183,70 @@ INSERT INTO `winners` (`id`, `prize`, `winner`, `status`) VALUES
 (88, 'bottle ', 'John', 'Не отправлено'),
 (89, 'Money 366\n', 'John', 'Не отправлено'),
 (90, 'Money 609\n', 'John', 'Не отправлено'),
-(91, 'bottle ', 'John', 'Не отправлено');
+(91, 'bottle ', 'John', 'Не отправлено'),
+(92, 'Pivo ', 'alex', 'Не отправлено'),
+(93, 'money ', 'alex', 'Не отправлено'),
+(94, 'bottle ', 'alex', 'Не отправлено'),
+(95, 'bread ', 'alex', 'Не отправлено'),
+(96, 'bottle ', 'alex', 'Не отправлено'),
+(97, 'bread ', 'alex', 'Не отправлено'),
+(98, 'bread ', 'alex', 'Не отправлено'),
+(99, 'Money 521\n', 'alex', 'Не отправлено'),
+(100, 'money ', 'alex', 'Не отправлено'),
+(101, 'Pivo ', 'alex', 'Не отправлено'),
+(102, 'money ', 'alex', 'Не отправлено'),
+(103, 'money ', 'alex', 'Не отправлено'),
+(104, 'Money 63\n', 'alex', 'Не отправлено'),
+(105, 'money ', 'alex', 'Не отправлено'),
+(106, 'Money 139\n', 'alex', 'Не отправлено'),
+(107, 'money ', 'alex', 'Не отправлено'),
+(108, 'Money 856\n', 'alex', 'Не отправлено'),
+(109, 'Money 800\n', 'alex', 'Не отправлено'),
+(110, 'bread ', 'alex', 'Не отправлено'),
+(111, 'Money 132\n', 'alex', 'Не отправлено'),
+(112, 'bottle ', 'alex', 'Не отправлено'),
+(113, 'Pivo ', 'alex', 'Не отправлено'),
+(114, 'bottle ', 'alex', 'Не отправлено'),
+(115, 'Pivo ', 'alex', 'Не отправлено'),
+(116, 'bread ', 'alex', 'Не отправлено'),
+(117, 'bread ', 'alex', 'Не отправлено'),
+(118, 'Pivo ', 'alex', 'Не отправлено'),
+(119, 'bread ', 'alex', 'Не отправлено'),
+(120, 'bottle ', 'alex', 'Не отправлено'),
+(121, 'Money 676\n', 'alex', 'Не отправлено'),
+(122, 'Money 493\n', 'alex', 'Не отправлено'),
+(123, 'Money 608\n', 'alex', 'Не отправлено'),
+(124, 'Money 806\n', 'alex', 'Не отправлено'),
+(125, 'Pivo ', 'alex', 'Не отправлено'),
+(126, 'bottle ', 'alex', 'Не отправлено'),
+(127, 'bread ', 'alex', 'Не отправлено'),
+(128, 'Money 708\n', 'alex', 'Не отправлено'),
+(129, 'bread ', 'alex', 'Не отправлено'),
+(130, 'bottle ', 'alex', 'Не отправлено'),
+(131, 'bottle ', 'alex', 'Не отправлено'),
+(132, 'bread ', 'alex', 'Не отправлено'),
+(133, 'Pivo ', 'alex', 'Не отправлено'),
+(134, 'bottle ', 'alex', 'Не отправлено'),
+(135, 'bread ', 'alex', 'Не отправлено'),
+(136, 'bottle ', 'alex', 'Не отправлено'),
+(137, 'bread ', 'alex', 'Не отправлено'),
+(138, 'Pivo ', 'alex', 'Не отправлено'),
+(139, 'bottle ', 'alex', 'Не отправлено'),
+(140, 'bottle ', 'alex', 'Не отправлено'),
+(141, 'Pivo ', 'alex', 'Не отправлено'),
+(142, 'bread ', 'alex', 'Не отправлено'),
+(143, 'Pivo ', 'alex', 'Не отправлено'),
+(144, 'Pivo ', 'alex', 'Не отправлено'),
+(145, 'Pivo ', 'alex', 'Не отправлено'),
+(146, 'Pivo ', 'alex', 'Не отправлено'),
+(147, 'Pivo ', 'alex', 'Не отправлено'),
+(148, 'Pivo ', 'alex', 'Не отправлено'),
+(149, 'Money 857\n', 'alex', 'Не отправлено'),
+(150, 'Pivo ', 'alex', 'Не отправлено'),
+(151, 'Pivo ', 'alex', 'Не отправлено'),
+(152, 'Money 727\n', 'alex', 'Не отправлено'),
+(153, 'Money 714\n', 'alex', 'Не отправлено'),
+(154, 'Pivo ', 'alex', 'Не отправлено');
 
 --
 -- Индексы сохранённых таблиц
@@ -215,19 +278,19 @@ ALTER TABLE `winners`
 -- AUTO_INCREMENT для таблицы `prizes`
 --
 ALTER TABLE `prizes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT для таблицы `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT для таблицы `winners`
 --
 ALTER TABLE `winners`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=92;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=155;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
